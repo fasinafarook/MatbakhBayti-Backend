@@ -1,9 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
-const userRoutes = require('./routes/userRoute');
 const cookieParser = require('cookie-parser');
-
+const userRoutes = require('./routes/userRoutes/userRoute');
+const adminRoutes = require('./routes/adminRoutes/adminRoute');
 
 const errorHandler = require('./middleware/errorHandler');
 
@@ -16,6 +16,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
+
 
 app.use(errorHandler)
 
