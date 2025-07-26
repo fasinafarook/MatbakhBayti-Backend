@@ -11,8 +11,8 @@ router.post('/verify-otp', verifyOtp);
 router.post('/resend-otp', resendOtp);
 router.post("/logout",userAuth, logout);
 
-router.get('/products', userAuth,getAllListedProducts);
-router.get('/category', userAuth,getListedCategories);
+router.get('/products',getAllListedProducts);
+router.get('/category',getListedCategories);
 
 
 module.exports = router;
