@@ -8,7 +8,12 @@ const productSchema = new mongoose.Schema(
     image: { type: String }, 
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
     isListed: { type: Boolean, default: true },
-    preparationTime: { type: String }, // e.g., "30 mins" or "00:30:00"
+    preparationTime: { type: String }, 
+     type: {
+      type: String,
+      enum: ['Veg', 'Non-Veg'],
+      required: true,
+    },
   },
   { timestamps: true }
 );

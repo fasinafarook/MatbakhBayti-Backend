@@ -32,9 +32,9 @@ router.get('/categories', adminAuth,getAllCategories);
 router.put('/category/:id',adminAuth, editCategory);
 router.patch('/category/:id/toggle-list',adminAuth, toggleCategoryListStatus);
 
-router.post('/product', cloudinaryUpload.single('image'),adminAuth, addProduct);
+router.post('/product', cloudinaryUpload.single('image'), adminAuth,addProduct);
 router.get('/products', adminAuth,getAllProducts);
-router.put('/product/:id', adminAuth,updateProduct);
+router.patch('/product/:id',cloudinaryUpload.single('image'), adminAuth,updateProduct);
 router.patch('/product/:id/toggle-list', adminAuth,toggleProductListing);
 
 router.get('/users', adminAuth,getAllUsers);
