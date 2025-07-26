@@ -10,7 +10,7 @@ const categorySchema = new mongoose.Schema(
     },
     isListed: {
       type: Boolean,
-      default: true, // ✅ Default: listed/active
+      default: true, 
     },
   },
   { timestamps: true }

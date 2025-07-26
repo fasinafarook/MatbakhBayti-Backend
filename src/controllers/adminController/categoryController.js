@@ -8,16 +8,16 @@ const addCategory = async (req, res) => {
     if (!name) {
       return res.status(400).json({
         success: false,
-        message: 'Category name is required',
+        errors: { name: "Category name is required" },
       });
     }
 
-    const existingCategory = await Category.findOne({ name: name.trim() });
+      const existingCategory = await Category.findOne({ name: name.trim() });
 
     if (existingCategory) {
       return res.status(409).json({
         success: false,
-        message: 'Category already exists',
+        errors: { name: "Category already exists" }, 
       });
     }
 
@@ -30,13 +30,13 @@ const addCategory = async (req, res) => {
 
     return res.status(201).json({
       success: true,
-      message: 'Category added successfully',
+      message: "Category added successfully",
       category,
     });
   } catch (err) {
     return res.status(500).json({
       success: false,
-      message: 'Server error',
+      message: "Server error",
       detail: err.message,
     });
   }
