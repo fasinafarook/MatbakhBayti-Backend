@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: 'https://matbakh-bayti.vercel.app/', 
+    origin: 'https://matbakh-bayti.vercel.app', 
     credentials: true, 
   })
 );
