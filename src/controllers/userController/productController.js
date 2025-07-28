@@ -1,7 +1,7 @@
 const Product = require('../../models/productModel');
 const Category = require("../../models/categoryModel");
 
-const getAllListedProducts = async (req, res) => {
+const getAllListedProducts = async (req, res,next) => {
   try {
     const products = await Product.find({ isListed: true }).populate('category', 'name'); 
     res.status(200).json({ success: true, data: products });
