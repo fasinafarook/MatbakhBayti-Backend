@@ -32,8 +32,8 @@ app.use(
 );
 
 
-app.use('/user', userRoutes);
-app.use('/admin', adminRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 
 app.use(errorHandler)
