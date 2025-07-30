@@ -16,27 +16,10 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(
-//   cors({
-
-//     origin: 'http://localhost:5173', 
-//     credentials: true, 
-//   })
-// );
+// Only ONE cors config should exist
 app.use(
   cors({
-    origin: 'https://matbakh-bayti.vercel.app', 
-    credentials: true,
-  })
-);
-
-app.use('/api/user', userRoutes);
-app.use('/api/admin', adminRoutes);
-
-
-app.use(errorHandler)
-
-    origin: 'https://matbakh-bayti.vercel.app', 
+    origin: 'https://matbakh-bayti.vercel.app',
     credentials: true,
   })
 );
@@ -47,7 +30,6 @@ app.use('/api/admin', adminRoutes);
 
 // Error handler middleware
 app.use(errorHandler);
-
 
 // Start server
 const PORT = process.env.PORT || 5000;
