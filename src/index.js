@@ -16,24 +16,21 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = ['http://localhost:5173', 'https://matbakh-bayti.vercel.app'];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
+    origin: 'http://localhost:5173', 
+    credentials: true, 
   })
 );
+// app.use(
+//   cors({
+//     origin: 'https://matbakh-bayti.vercel.app', 
+//     credentials: true,
+//   })
+// );
 
-
-app.use('/user', userRoutes);
-app.use('/admin', adminRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 
 app.use(errorHandler)
