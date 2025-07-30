@@ -93,14 +93,14 @@ const login = async (req, res, next) => {
 
     res.cookie("userToken", accessToken, {
       httpOnly: true,
-      secure: false, // true only in production with HTTPS
+      secure: true, // true only in production with HTTPS
       sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "lax",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
@@ -177,7 +177,7 @@ const refreshToken = async (req, res) => {
 
     res.cookie("userToken", accessToken, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -192,13 +192,13 @@ const logout = async (req, res, next) => {
   try {
     res.clearCookie("userToken", {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "lax",
     });
 
     res.clearCookie("refreshToken", {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "lax",
     });
 
