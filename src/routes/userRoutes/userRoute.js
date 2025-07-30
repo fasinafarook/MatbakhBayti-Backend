@@ -21,11 +21,13 @@ router.post("/logout",userAuth, logout);
 router.get('/products',getAllListedProducts);
 router.get('/category',getListedCategories);
 
+
 router.get('/cart', userAuth, getCart);
 router.post('/add-cart', userAuth, addToCart);
 router.put('/update-cart', userAuth, updateCartItem);
 router.delete('/remove-cart', userAuth, removeCartItem);
 router.delete('/clear-cart', userAuth, clearCart);
+
 
 
 module.exports = router;
