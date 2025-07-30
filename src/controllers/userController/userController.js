@@ -112,7 +112,11 @@ const login = async (req, res, next) => {
         name: user.name,
         email: user.email,
       },
+
+      token: accessToken,
+
         token: accessToken,
+
     });
   } catch (err) {
     next(err);
