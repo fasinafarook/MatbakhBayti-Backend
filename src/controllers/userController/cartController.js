@@ -6,10 +6,22 @@ const CustomError = require('../../services/customError');
 const getCart = async (req, res, next) => {
   try {
     const cart = await Cart.findOne({ user: req.user.id }).populate('items.product');
+
     if (!cart) {
-      return res.status(200).json({ success: true, data: [] });
+      return res.status(200).json({
+        success: true,
+        data: {
+          items: [],
+        },
+      });
     }
-    res.status(200).json({ success: true, data: cart });
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        items: cart.items,
+      },
+    });
   } catch (err) {
     next(err);
   }
