@@ -8,6 +8,7 @@ const {
   removeCartItem,
   clearCart
 } = require('../../controllers/userController/cartController');
+const { placeOrder,getSavedAddresses,updateAddress,getMyOrders,cancelOrder,getOrderDetails,cancelOrderItem } = require ('../../controllers/userController/orderController');
 const userAuth = require('../../middleware/userAuth');
 const router = express.Router();
 
@@ -27,6 +28,14 @@ router.post('/add-cart', userAuth, addToCart);
 router.put('/update-cart', userAuth, updateCartItem);
 router.delete('/remove-cart', userAuth, removeCartItem);
 router.delete('/clear-cart', userAuth, clearCart);
+
+router.post("/order", userAuth, placeOrder);
+router.put("/update-address/:orderId", userAuth, updateAddress);
+router.get('/addresses', userAuth, getSavedAddresses);
+router.get("/orders/my-orders", userAuth, getMyOrders);
+router.patch("/orders/:orderId/cancel", userAuth, cancelOrder);
+router.get("/orders/:orderId", userAuth, getOrderDetails);
+router.patch("/orders/:orderId/items/:itemId/cancel",userAuth,cancelOrderItem);
 
 
 
