@@ -18,7 +18,7 @@ const {
 
 const { getAllUsers,toggleBlockUser} = require('../../controllers/adminController/userController');
 const { getAllOrders,updateOrderStatus} = require('../../controllers/adminController/orderController');
-
+const { getDashboardData } = require('../../controllers/adminController/dashboardController');
 
 const adminAuth = require('../../middleware/adminAuth');
 
@@ -40,8 +40,10 @@ router.patch('/product/:id/toggle-list', adminAuth,toggleProductListing);
 router.get('/users', adminAuth,getAllUsers);
 router.patch('/user/:id/toggle-block', adminAuth,toggleBlockUser);
 
-router.get('/order', adminAuth, getAllOrders);
-router.patch('/order/:id/status', adminAuth, updateOrderStatus);
+router.get('/orders', adminAuth, getAllOrders);
+router.patch('/orders/:id/status', adminAuth, updateOrderStatus);
+
+router.get("/dashboard",adminAuth, getDashboardData);
 
 
 module.exports = router;
