@@ -255,8 +255,7 @@ const getSavedAddresses = async (req, res, next) => {
         addressMap.set(addressKey, true);
         uniqueAddresses.push({
           ...order.shippingAddress.toObject(),
-          // Add a generated ID if needed for frontend
-          _id: order._id // Using order ID as a reference
+          _id: order._id 
         });
       }
     });
@@ -415,4 +414,3 @@ module.exports = {
   getOrderDetails,
   cancelOrderItem
 };
-// module.exports = { placeOrder, getSavedAddresses,updateAddress };
