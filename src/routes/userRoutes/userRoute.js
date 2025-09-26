@@ -22,6 +22,7 @@ router.post("/logout",userAuth, logout);
 router.get('/products',getAllListedProducts);
 router.get('/category',getListedCategories);
 
+
 router.get('/cart', userAuth, getCart);
 router.post('/add-cart', userAuth, addToCart);
 router.put('/update-cart', userAuth, updateCartItem);
@@ -36,4 +37,8 @@ router.patch("/orders/:orderId/cancel", userAuth, cancelOrder);
 router.get("/orders/:orderId", userAuth, getOrderDetails);
 router.patch("/orders/:orderId/items/:itemId/cancel",userAuth,cancelOrderItem);
 
+
+
+
 module.exports = router;
+
