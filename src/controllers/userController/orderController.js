@@ -393,6 +393,17 @@ const cancelOrderItem = async (req, res, next) => {
     }
 
     item.status = "cancelled";
+
+    // Check if all items are cancelled
+    const allItemsCancelled = order.items.every(
+      (item) => item.status === "cancelled"
+    );
+
+    // If all items are cancelled, update order status to cancelled
+    if (allItemsCancelled) {
+      order.status = "cancelled";
+    }
+
     await order.save();
 
     res.status(200).json({
@@ -404,6 +415,7 @@ const cancelOrderItem = async (req, res, next) => {
     next(err);
   }
 };
+
 
 module.exports = { 
   placeOrder, 
